@@ -22,6 +22,14 @@ QR 코드 주소(`?k=접속키`)로 들어온 기기만 워크북을 볼 수 있
 ## 실행
 빌드 과정이 없는 정적 페이지입니다. `index.html`을 브라우저로 열면 됩니다.
 
+## 배포 (Railway)
+1. [railway.com](https://railway.com)에 GitHub 계정으로 로그인합니다.
+2. **New Project → Deploy from GitHub repo**에서 이 저장소를 고릅니다. `package.json`과 `railway.json`을 읽어 `node server.js`로 실행합니다.
+3. 서비스의 **Settings → Networking → Generate Domain**을 누르면 `https://○○○.up.railway.app` 주소가 생깁니다.
+4. QR 코드는 `https://○○○.up.railway.app/?k=접속키` 주소로 만듭니다.
+
+`main`에 푸시하면 Railway가 자동으로 다시 배포합니다.
+
 ## 배포 (GitHub Pages)
 저장소 **Settings → Pages → Build and deployment**에서 Source를 `Deploy from a branch`로, 브랜치와 `/ (root)` 폴더를 선택하면
 `https://<계정>.github.io/<저장소>/` 주소로 열립니다. 이 주소를 QR로 만들어 오픈채팅방에 공유하세요.
