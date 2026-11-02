@@ -350,3 +350,16 @@ td:first-child { font-weight: 700; white-space: nowrap; }
   .crumb, .actions, .opts, .closing .btn, .toast { display: none !important; }
   .sec { break-inside: avoid-page; }
 }
+
+/* ───────── QR 접속 확인 화면 ───────── */
+.gate { display: none; }
+html.locked body > :not(.gate) { display: none !important; }
+html.locked .gate {
+  display: grid; place-items: center; min-height: 100vh; min-height: 100dvh;
+  background: var(--navy); color: #fff; padding: 24px 16px; text-align: center;
+}
+.gate-box { max-width: 420px; }
+.gate-kicker { font-size: 13px; opacity: .8; }
+.gate h1 { font-size: clamp(26px, 6vw, 34px); margin: 18px 0 12px; }
+.gate p { opacity: .9; line-height: 1.7; }
+.gate svg { width: 88px; height: 88px; margin-top: 28px; color: var(--yellow); fill: var(--yellow); }

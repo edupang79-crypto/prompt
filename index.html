@@ -6,12 +6,39 @@
 <title>아이디어 발굴 프롬프트 워크북</title>
 <meta name="description" content="생성형 AI 도구 활용을 통한 아이디어 발굴법 · 문제 정의 → 아이디어 도출 → 비즈니스 모델, 프롬프트 9개로 한 바퀴">
 <meta name="theme-color" content="#14254A">
+<meta name="robots" content="noindex, nofollow">
+<script>
+/* QR 코드 접속 확인: QR 주소의 ?k= 값이 맞으면 이 기기에 접속 허용을 기억하고, 주소창에서는 지웁니다. */
+(function () {
+  var HASH = '1k0j9hcand5', KEY = 'idea-workbook-access';
+  function h(s){var a=0xdeadbeef,b=0x41c6ce57;for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677);}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return(4294967296*(2097151&b)+(a>>>0)).toString(36);}
+  var ok = false, k = null;
+  try { k = new URLSearchParams(location.search).get('k'); } catch (e) {}
+  try { ok = localStorage.getItem(KEY) === HASH; } catch (e) {}
+  if (k && h(k) === HASH) {
+    ok = true;
+    try { localStorage.setItem(KEY, HASH); } catch (e) {}
+  }
+  if (k) { try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {} }
+  if (!ok) document.documentElement.className += ' locked';
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<!-- QR 코드 없이 들어온 경우 보이는 화면 -->
+<div class="gate" role="dialog" aria-labelledby="gateTitle">
+  <div class="gate-box">
+    <p class="gate-kicker">AI Build-up 창업 캠프 · AI 창업 아이디어 해커톤</p>
+    <h1 id="gateTitle">QR 코드로 접속해 주세요</h1>
+    <p>이 프롬프트 워크북은 강의 현장에서 안내한<br>QR 코드를 휴대폰 카메라로 찍어서 들어올 수 있습니다.</p>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4"/><rect x="38" y="6" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4"/><rect x="6" y="38" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4"/><rect x="13" y="13" width="6" height="6"/><rect x="45" y="13" width="6" height="6"/><rect x="13" y="45" width="6" height="6"/><path d="M38 38h8v8h-8zM50 38h8M38 50h4v8M50 50h8v8h-8z"/></svg>
+  </div>
+</div>
 
 <!-- ───────── 상단 고정 진행 표시 (PPT 상단 흐름 막대) ───────── -->
 <nav class="crumb" id="crumb" aria-label="진행 단계">
