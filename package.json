@@ -1,0 +1,13 @@
+{
+  "name": "idea-prompt-workbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "생성형 AI 도구 활용을 통한 아이디어 발굴법 프롬프트 워크북",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
