@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>아이디어 발굴 프롬프트 워크북</title>
+<meta name="description" content="생성형 AI 도구 활용을 통한 아이디어 발굴법 · 문제 정의 → 아이디어 도출 → 비즈니스 모델, 프롬프트 9개로 한 바퀴">
+<meta name="theme-color" content="#14254A">
+<meta name="robots" content="noindex, nofollow">
+<script>
+/* QR 코드 접속 확인: QR 주소의 ?k= 값이 맞으면 이 기기에 접속 허용을 기억하고, 주소창에서는 지웁니다. */
+(function () {
+  var HASH = '1k0j9hcand5', KEY = 'idea-workbook-access';
+  function h(s){var a=0xdeadbeef,b=0x41c6ce57;for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677);}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return(4294967296*(2097151&b)+(a>>>0)).toString(36);}
+  var ok = false, k = null;
+  try { k = new URLSearchParams(location.search).get('k'); } catch (e) {}
+  try { ok = localStorage.getItem(KEY) === HASH; } catch (e) {}
+  if (k && h(k) === HASH) {
+    ok = true;
+    try { localStorage.setItem(KEY, HASH); } catch (e) {}
+  }
+  if (k) { try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {} }
+  if (!ok) document.documentElement.className += ' locked';
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- QR 코드 없이 들어온 경우 보이는 화면 -->
+<div class="gate" role="dialog" aria-labelledby="gateTitle">
+  <div class="gate-box">
+    <p class="gate-kicker">AI Build-up 창업 캠프 · AI 창업 아이디어 해커톤</p>
+    <h1 id="gateTitle">QR 코드로 접속해 주세요</h1>
+    <p>이 프롬프트 워크북은 강의 현장에서 안내한<br>QR 코드를 휴대폰 카메라로 찍어서 들어올 수 있습니다.</p>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4"/><rect x="38" y="6" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4"/><rect x="6" y="38" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4"/><rect x="13" y="13" width="6" height="6"/><rect x="45" y="13" width="6" height="6"/><rect x="13" y="45" width="6" height="6"/><path d="M38 38h8v8h-8zM50 38h8M38 50h4v8M50 50h8v8h-8z"/></svg>
+  </div>
+</div>
+
+<!-- ───────── 상단 고정 진행 표시 (PPT 상단 흐름 막대) ───────── -->
+<nav class="crumb" id="crumb" aria-label="진행 단계">
+  <div class="crumb-inner">
+    <span class="crumb-label" id="crumbLabel">시작</span>
+    <ol class="crumb-steps">
+      <li><a href="#start" data-sec="start">시작</a></li>
+      <li><a href="#stage1" data-sec="stage1">문제 정의</a></li>
+      <li><a href="#stage2" data-sec="stage2">아이디어 도출</a></li>
+      <li><a href="#stage3" data-sec="stage3">비즈니스 모델</a></li>
+      <li><a href="#finale" data-sec="finale">마무리</a></li>
+      <li><a href="#frame" data-sec="frame">만능 틀</a></li>
+    </ol>
+    <span class="crumb-progress" id="crumbProgress" title="복사한 프롬프트 수">0 / 9</span>
+  </div>
+</nav>
+
+<!-- ───────── 표지 ───────── -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">AI Build-up 창업 캠프 · AI 창업 아이디어 해커톤</p>
+    <h1>생성형 AI 도구 활용을 통한<br>아이디어 발굴법</h1>
+    <p class="hero-sub">문제 정의 → 아이디어 도출 → 비즈니스 모델, 프롬프트로 한 바퀴</p>
+    <div class="hero-foot">
+      <span>프롬프트 워크북 · 빈칸만 채우고 복사해서 AI로</span>
+      <strong>김미연 강사</strong>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ───────── 시작 ───────── -->
+<section class="sec" id="start" data-label="준비">
+  <div class="slide">
+    <h2 class="slide-title">시작 전에 세 가지</h2>
+    <ol class="three">
+      <li><b>1</b><div><strong>휴대폰 데이터 켜기</strong><span>와이파이가 느릴 수 있습니다</span></div></li>
+      <li><b>2</b><div><strong>AI 앱 하나 열기</strong><span>챗GPT, 제미나이, 클로드 중 평소 쓰는 것</span></div></li>
+      <li><b>3</b><div><strong>한 대화창에서 1번부터 9번까지</strong><span>새 대화를 열면 AI가 앞 내용을 모릅니다</span></div></li>
+    </ol>
+
+    <div class="howto">
+      <h3>이 워크북 쓰는 법</h3>
+      <div class="howto-row">
+        <div class="howto-step"><span class="yl">노란 칸</span>을 눌러 내 상황으로 바꿔 씁니다</div>
+        <span class="arrow">→</span>
+        <div class="howto-step"><b>복사</b> 후 AI 대화창에 붙여 넣습니다</div>
+        <span class="arrow">→</span>
+        <div class="howto-step">AI 답에서 고른 결과를 <b>내 결과물</b> 칸에 붙여 둡니다</div>
+      </div>
+      <p class="note">내 결과물은 다음 프롬프트의 노란 칸에 자동으로 들어갑니다. 입력한 내용은 이 기기 브라우저에만 저장됩니다.</p>
+    </div>
+
+    <div class="cases">
+      <h3>어떤 이야기로 시작할까요?</h3>
+      <p class="note">막히면 사례를 골라 빈칸을 채운 채로 따라 해 보세요. 프롬프트는 틀, 사례는 갈아 끼우는 것입니다.</p>
+      <div class="case-grid">
+        <button class="case-card" data-case="case1">
+          <span class="case-tag">사례 1 · 주제 1 일상 속 불편</span>
+          <strong>동네 밥상 잇기</strong>
+          <span>중장년의 요리 솜씨 ↔ 대학생의 끼니</span>
+        </button>
+        <button class="case-card" data-case="case2">
+          <span class="case-tag">사례 2 · 주제 2 이야기 콘텐츠</span>
+          <strong>여행 사진 그림책</strong>
+          <span>중장년의 가족 이야기 ↔ 대학생의 AI 제작 실력</span>
+        </button>
+        <button class="case-card mine" data-case="mine">
+          <span class="case-tag">직접</span>
+          <strong>내 아이디어로</strong>
+          <span>빈칸을 비우고 처음부터 채웁니다</span>
+        </button>
+      </div>
+    </div>
+
+    <details class="five">
+      <summary>좋은 프롬프트 5요소 다시 보기</summary>
+      <table>
+        <thead><tr><th>요소</th><th>무엇을 정하나</th><th>예</th></tr></thead>
+        <tbody>
+          <tr><td>역할</td><td>AI가 누구인가</td><td>"너는 지역 상권 창업 코치야"</td></tr>
+          <tr><td>상황</td><td>나는 누구이고 무엇을 하려는가</td><td>"나는 여수 AI 창업 해커톤에 참가한 대학생이야"</td></tr>
+          <tr><td>할 일</td><td>정확히 무엇을 해 달라는가</td><td>"관광객 불편 중 AI로 푸는 아이디어 5개"</td></tr>
+          <tr><td>조건</td><td>지켜야 할 기준</td><td>"대학생 팀이 6개월 안에 시작할 수 있을 것"</td></tr>
+          <tr><td>답 모양</td><td>어떤 형식으로 받나</td><td>"표로: 이름 / 누구의 불편 / AI가 하는 일"</td></tr>
+        </tbody>
+      </table>
+      <p class="warn">실명, 연락처, 고객 명단 같은 개인정보는 넣지 않습니다.</p>
+    </details>
+  </div>
+</section>
+
+<!-- 단계별 섹션은 app.js가 그립니다 -->
+<div id="stages"></div>
+
+<!-- ───────── 마무리 ───────── -->
+<section class="sec" id="finale" data-label="마무리">
+  <div class="divider">
+    <div class="divider-text">
+      <p class="divider-step">마무리</p>
+      <h2>한 바퀴 완성</h2>
+      <p class="divider-meta">결과물 <strong>오후에 들고 갈 세 가지</strong></p>
+      <p class="divider-sub">문제 정의 문장 · 한 줄 소개 · 예상 질문</p>
+    </div>
+    <svg class="divider-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="5"/><path d="M21 33l8 8 15-17" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div id="finaleBody"></div>
+</section>
+
+<!-- ───────── 만능 틀 ───────── -->
+<section class="sec" id="frame" data-label="만능 틀">
+  <div class="slide">
+    <h2 class="slide-title">어떤 질문이든 이 틀로</h2>
+    <p class="note">오늘 쓴 프롬프트 9개도 모두 이 다섯 줄로 만들었습니다. 카드에 없는 질문은 이 틀로 직접 만들어 보세요.</p>
+    <div id="frameCard"></div>
+  </div>
+</section>
+
+<section class="closing">
+  <p>AI는 답을 주는 기계가 아니라,<br><strong>좋은 질문을 할수록 똑똑해지는 동료</strong>입니다</p>
+  <button class="btn ghost" id="resetAll" type="button">입력한 내용 모두 지우기</button>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
