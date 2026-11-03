@@ -6,9 +6,9 @@
   /* ───────── 빈칸 정의 ───────── */
   const FIELDS = {
     who:      { ph: '대학생 / 중장년 / 가게 사장님', opts: ['대학생', '중장년', '가게 사장님'] },
-    field:    { ph: '자취 생활 / 먹거리 / 여행 / 지역 가게 / 가족 추억', opts: ['자취 생활', '먹거리', '여행', '지역 가게', '가족 추억'], multi: true },
-    persona:  { ph: '대학가에서 자취하는 2학년 대학생' },
-    topic:    { ph: '평일 저녁 끼니' },
+    field:    { ph: '자취 생활 / 자기소개와 취업 / 먹거리 / 여행 / 지역 가게', opts: ['자취 생활', '자기소개와 취업', '먹거리', '여행', '지역 가게', '가족 추억'], multi: true },
+    persona:  { ph: '반찬 솜씨 좋은 55세 동네 주부', opts: ['반찬 솜씨 좋은 55세 동네 주부', '30년 된 동네 가게 사장님', '대학가에서 자취하는 2학년 대학생'] },
+    topic:    { ph: '반찬을 만들어 파는 일' },
     memo:     { ph: '테이블에서 들은 말 두세 줄' },
     problem:  { ph: '앞에서 고른 문제 정의 문장' },
     idea:     { ph: '내가 고른 아이디어' },
@@ -24,27 +24,28 @@
     fShape:   { ph: '표 / 다섯 줄 / 번호 목록', opts: ['표', '다섯 줄', '번호 목록'] },
   };
 
-  /* ───────── 사례 프리셋 (PPT 사례 1·2) ───────── */
+  /* ───────── 사례 프리셋 (시뮬레이션 트랙 A·B) ───────── */
   const CASES = {
     case1: {
-      who: '대학생', field: '자취 생활 / 먹거리',
-      persona: '대학가에서 자취하는 2학년 대학생', topic: '평일 저녁 끼니',
-      memo: '지난주에 저녁을 세 번 걸렀다. 1인분 배달은 비싸서 편의점으로 때운다. 집밥 같은 반찬이 제일 아쉽다.',
-      problem: '대학가에서 자취하는 대학생은 수업과 아르바이트로 바쁜 평일 저녁에 끼니를 챙기려 할 때 시간과 돈이 모자라 거르거나 편의점 음식으로 때운다. 지금은 배달 앱을 쓰지만 1인분 배달은 비싸고 집밥 같은 반찬은 구하기 어렵다.',
-      idea: '동네 밥상 구독',
-      oneLiner: "자취 대학생을 위한 '동네 밥상 구독'으로, AI가 예산과 입맛에 맞춰 주간 반찬을 추천하고 동네 중장년 요리인과 이어 준다.",
-      money: "학생 주간 구독, 부모의 '자녀 밥상 선물', 판매 수수료 (가격은 조사 필요)",
+      who: '대학생', field: '자취 생활',
+      persona: '반찬 솜씨 좋은 55세 동네 주부', topic: '반찬을 만들어 파는 일',
+      memo: '반찬 나눠 준 적은 많은데 팔아 본 적은 없다. 주문 받고 돈 받는 게 제일 걸린다. 카톡으로 주문 받으면 될 것 같다.',
+      problem: '자취생은 알바 끝난 평일 저녁 끼니를 챙기려 할 때 시간이 없고 1인분 배달은 비싸 거르거나 편의점으로 때운다. 지금은 편의점·배달로 버티지만 식비가 많이 들고 집밥 같은 반찬은 구할 수 없다.',
+      idea: '9번 동네 반찬 요리인 ↔ 자취생 주간 구독',
+      oneLiner: "자취 대학생을 위한 '동네 밥상 구독'으로, AI가 예산과 입맛에 맞춰 주간 반찬을 추천하고 동네 중장년 요리인과 이어 주어 평일 저녁 끼니 문제를 해결한다.",
+      money: '학생 주간 구독(매주 자동 결제, 결제는 부모도 가능). 가격은 조사 필요',
     },
     case2: {
-      who: '중장년', field: '여행 / 가족 추억',
-      persona: '여수로 가족 여행을 다녀온 50대 부모', topic: '여행 사진 정리',
-      memo: '사진은 수백 장인데 다시 본 적이 없다. 정리하는 법을 모르겠다. 손주에게 보여 줄 무언가를 남기고 싶다.',
-      problem: '여수로 여행 온 가족과 친구들은 여행이 끝난 뒤 사진을 정리하려 할 때 시간과 편집 실력이 없어 휴대폰 속에 묻어 둔다. 지금은 앨범 앱에 모아 두거나 몇 장만 인화하지만 그날의 이야기와 장소의 추억은 남지 않는다.',
-      idea: '여행 사진 그림책',
-      oneLiner: "여수 여행자를 위한 '여행 사진 그림책'으로, AI가 사진 10장으로 우리만의 여행 이야기와 그림을 만들어 그림책과 30초 영상으로 완성한다.",
-      money: '그림책 1권 판매, 영상 추가 구매, 호텔·관광지 제휴 수수료 (가격은 조사 필요)',
+      who: '대학생', field: '자기소개와 취업',
+      persona: '30년 된 동네 가게 사장님', topic: '가게를 알리는 일',
+      memo: '내 일을 설명하려면 자랑 같아서 입이 안 떨어진다. 전단지는 해 봤는데 효과가 없었다.',
+      problem: '취업 준비 대학생은 자기소개 글·영상을 만들 때 무엇을 말해야 할지 몰라 자격증과 경험을 나열한다. 지금은 인터넷 예시를 베끼거나 친구에게 묻지만 내 이야기가 빠져 남들과 비슷해진다.',
+      idea: '9번 AI가 기자처럼 인터뷰해 만드는 30초 이야기 영상 (학생·사장님 공용)',
+      oneLiner: "취업 준비 대학생과 가게 사장님을 위한 '30초 이야기 영상 코치'로, AI가 기자처럼 인터뷰해 자랑 대신 이야기로 된 대본과 영상 초안을 만들어 '뭘 말해야 할지 모르는' 문제를 해결한다.",
+      money: '대학 취업지원센터 학기 단위 계약(한 학기 특강 + 영상 제작). 가격은 조사 필요',
     },
   };
+  const TRACKS = { A: '트랙 A · 동네 밥상 잇기', B: '트랙 B · 나를 알리는 30초 영상' };
 
   /* ───────── 단계 · 프롬프트 (PPT 슬라이드 12~37) ───────── */
   const STAGES = [
@@ -60,6 +61,7 @@
         {
           n: 1, title: '불편 찾기', min: 3,
           tpl: '너는 창업 아이디어를 찾아 주는 문제 발견 코치야.\n나는 {{who}}이고,\n관심 있는 분야는 {{field}}야.\n이 분야에서 사람들이 실제로 겪는 불편을 15개 찾아 줘.\n조건\n- 한 문장에 \'누가, 언제, 무엇이 불편한지\'가 다 들어가게\n- \'귀찮다, 아깝다, 불안하다, 막막하다\' 네 가지 감정으로 나눠서\n- 대학생과 중장년이 함께 겪거나 서로 도울 수 있는 불편을 3개 이상 넣어 줘\n- 정보가 부족하면 먼저 나에게 질문 2개를 해 줘',
+          callout: ['AI가 먼저 질문을 하면', '한 줄로 짧게 답하고 넘어가세요. 예) "대학가 원룸 1년, 평일 저녁 6~9시 수업과 알바." 길게 답하면 2분이 지나갑니다.'],
           why: [
             ['\'코치\' 역할', '답만 내놓지 않고 되묻습니다'],
             ['\'누가, 언제, 무엇이\'', '"홍보가 어렵다" 같은 막연한 불편을 막습니다'],
@@ -73,10 +75,13 @@
           followups: {
             title: '이렇게 물어보세요',
             items: ['최근에 그 일을 할 때 어떻게 하셨어요?', '그때 가장 답답했던 순간은요?', '돈이나 시간을 얼마나 쓰셨어요?', '누구에게 도움을 받아 보셨어요?'],
-            note: '앞으로 쓸지를 묻지 말고, 지난 행동을 묻습니다. 미래 질문에는 누구나 "좋네요"라고 답합니다.',
+            note: '앞으로 쓸지를 묻지 말고, 지난 행동을 묻습니다. 미래 질문에는 누구나 "좋네요"라고 답합니다. 시간이 빠듯하면 네 질문을 한 번에 보내거나 음성 입력을 쓰세요.',
+            all: '아래 네 질문에 차례로 답해 줘.',
           },
           why: [
-            ['사례 2라면', '[여수로 가족 여행을 다녀온 50대 부모], [여행 사진 정리]'],
+            ['트랙 A라면', '[반찬 솜씨 좋은 55세 동네 주부], [반찬을 만들어 파는 일]'],
+            ['트랙 B라면', '[30년 된 동네 가게 사장님], [가게를 알리는 일]'],
+            ['AI 고객의 숫자', '"서너 시간, 열 명분"처럼 그럴듯한 숫자는 지어낸 가설입니다. 진짜 숫자는 테이블의 사람에게서'],
             ['지난 행동을 묻기', '"쓰실 건가요?"보다 "지난번엔 어떻게 하셨어요?"가 진짜 답을 끌어냅니다'],
           ],
         },
@@ -98,10 +103,6 @@
             ['실제 인터뷰 메모', '일반론 대신 진짜 고객의 말로 문장을 씁니다'],
             ['세 가지 기준', '심사위원이 묻는 \'시장이 있나, 절실한가, 돈이 되나\'와 같습니다'],
           ],
-          sample: [
-            ['사례 1 · 동네 밥상 잇기', '대학가에서 자취하는 대학생은 수업과 아르바이트로 바쁜 평일 저녁에 끼니를 거르거나 편의점 음식으로 때운다. 지금은 배달 앱을 쓰지만 1인분 배달은 비싸고 집밥 같은 반찬은 구하기 어렵다. 같은 동네에서 요리 경험이 많은 중장년은 반찬을 만들어 팔고 싶어도 판로를 찾지 못한다.'],
-            ['사례 2 · 여행 사진 그림책', '여수로 여행 온 가족과 친구들은 사진을 수백 장 찍지만, 정리할 시간과 편집 실력이 없어 휴대폰 속에 묻어 둔다. 지금은 앨범 앱에 모아 두거나 몇 장만 인화하지만, 그날의 이야기와 장소의 추억은 남지 않는다.'],
-          ],
         },
       ],
       results: [
@@ -122,7 +123,7 @@
           tpl: '너는 창업 아이디어 발상 전문가야.\n아래 문제를 해결하는 아이디어를 20개 내 줘.\n문제: {{problem}}\n조건\n- 다섯 방향으로 4개씩\n① AI가 대신 해 준다   ② AI가 가르쳐 준다\n③ 사람과 사람을 이어 준다   ④ 다른 업종의 방법을 빌려 온다\n⑤ 정반대로 뒤집어 본다\n- 아이디어마다 한 줄로\n- 뻔한 것과 엉뚱한 것을 섞어 줘',
           why: [
             ['다섯 방향', '비슷한 20개가 아니라 서로 다른 20개가 나옵니다'],
-            ['사람과 사람을 이어 준다', '세대 협업 아이디어가 나오는 자리입니다. 사례 1의 반찬 잇기가 여기서 나옵니다'],
+            ['사람과 사람을 이어 준다', '세대 협업 아이디어가 나오는 자리입니다. 트랙 A의 반찬 구독, 트랙 B의 AI 기자 인터뷰가 여기서 나왔습니다'],
             ['엉뚱한 것 허락', '심사위원이 기억할 아이디어가 섞여 나옵니다'],
           ],
         },
@@ -131,7 +132,7 @@
           tpl: '위 20개 중에서 해커톤에 맞는 아이디어 5개를 골라 표로 비교해 줘.\n칸: 아이디어 / 문제를 얼마나 풀어 주나 / 대학생 팀이 6개월 안에 시작할 수 있나 / AI가 꼭 필요한가 / 비슷한 서비스와 다른 점\n점수 칸은 1~5점, 마지막에 합계.\n합계 1위와, 점수는 낮지만 가능성이 큰 숨은 후보 하나를 추천해 줘.',
           why: [
             ['기준은 내가 정한다', 'AI가 고른 \'좋아 보이는 답\'에 끌려가지 않습니다'],
-            ['AI가 꼭 필요한가', 'AI 창업 해커톤이라 꼭 넣습니다'],
+            ['AI가 꼭 필요한가', 'AI 창업 해커톤이라 꼭 넣습니다. "단순 매칭이면 AI가 필요 없다"는 단서가 여기서 나옵니다'],
             ['고르는 건 사람', '테이블의 다른 세대에게 "이거라면 돈을 내시겠어요?"'],
           ],
         },
@@ -141,10 +142,6 @@
           why: [
             ['한 줄 소개 형식', '내일 발표의 첫 문장이 됩니다'],
             ['사용 장면 다섯 단계', '빠진 기능과 AI가 들어갈 자리가 보입니다'],
-          ],
-          sampleFlow: [
-            ['사례 1', "자취 대학생을 위한 '동네 밥상 구독'으로, AI가 예산과 입맛에 맞춰 주간 반찬을 추천하고 동네 중장년 요리인과 이어 준다.", ['입맛·예산 입력', 'AI 주간 식단 추천', '요리인이 반찬 준비', '주 2회 픽업', '남긴 양 기록, 추천이 정확해짐']],
-            ['사례 2', "여수 여행자를 위한 '여행 사진 그림책'으로, AI가 사진 10장으로 우리만의 여행 이야기와 그림을 만들어 그림책과 30초 영상으로 완성한다.", ['사진 10장 올리기', '기억나는 순간 세 줄', 'AI가 이야기·그림 생성', '제작자가 다듬기', '그림책 배송·영상 전송']],
           ],
         },
       ],
@@ -166,14 +163,13 @@
             ['(가정) 표시', '멘토링 때 확인할 질문 목록이 됩니다'],
             ['숫자 지어내지 않기', '출처 없는 시장 규모는 심사장에서 무너집니다'],
           ],
-          canvasSamples: true,
         },
         {
           n: 8, title: '돈의 흐름 설계', min: 5, chained: true,
           tpl: '이 서비스로 돈을 버는 방법을 세 가지로 설계해 줘.\n각각: 누가 돈을 내나 / 무엇에 내나 / 어떻게 내나(한 번, 매달, 건당) / 첫 고객 10명을 어디서 찾나\n그중 가장 현실적인 하나를 고르고, 다음 한 달 동안 해 볼 수 있는 작은 실험 하나를 제안해 줘.',
           why: [
             ['누가 돈을 내나', '쓰는 사람과 돈 내는 사람이 다를 수 있습니다'],
-            ['사례로 보면', '사례 1은 학생이 먹고 부모가 냅니다. 사례 2는 부모가 주인공이고 자녀가 선물로 냅니다'],
+            ['사례로 보면', '트랙 A는 학생이 먹고 부모가 냅니다. 트랙 B는 학생이 쓰고 취업지원센터가 냅니다'],
             ['작은 실험', '"다음에 무엇을 할 건가요?"의 답이 됩니다'],
           ],
           aside: '실습 중 한마디 · 다른 세대에게 "얼마면 내시겠어요?"',
@@ -191,8 +187,8 @@
     tpl: '아래 창업 아이디어를 심사위원 입장에서 날카롭게 검토해 줘.\n심사위원: 투자사 대표, 창업 연구소장, IT 기업 매니저, ESG 협회 대표, 지역 진흥원 연구원\n문제 정의: {{problem}}\n한 줄 소개: {{oneLiner}}\n돈의 흐름: {{money}}\n1. 약점 다섯 가지\n2. 가장 치명적인 약점 하나와 보완 방법\n3. 질의응답 5분 동안 심사위원이 물어볼 질문 다섯 가지',
     why: [
       ['실제 심사위원 구성', '역할로 넣으면 질문이 현실에 가까워집니다'],
-      ['이런 질문이 나오면', '"집에서 만든 반찬을 팔 때 위생 기준과 영업 신고는 어떻게 할 건가?"'],
-      ['보완 → 확인', '공유주방이나 기존 반찬 가게와 손잡는다 → 실제로 가능한지는 멘토링에서 묻는다'],
+      ['약점은 아이디어마다 다르다', '트랙 A는 위생·법규, 트랙 B는 차별성. 그래서 멘토에게 물을 것도 다릅니다'],
+      ['보완 → 확인', '보완책은 AI가 내지만, 실제로 가능한지는 멘토링에서 묻는다'],
     ],
   };
 
@@ -213,30 +209,6 @@
     ['cost', '비용', '무엇에 돈이 드나'],
     ['revenue', '수익', '누가, 무엇에, 얼마를 내나'],
   ];
-  const CANVAS_SAMPLES = {
-    '사례 1 · 동네 밥상 잇기': {
-      problem: '자취생은 끼니를 거르고, 동네 요리인은 판로가 없다',
-      solution: 'AI 식단 추천 → 요리인 조리 → 주 2회 픽업',
-      uvp: '집밥 같은 반찬을 매주 알아서, 배달 한 끼보다 부담 없이',
-      edge: '동네 요리인 연결망과 학생 입맛 기록',
-      customer: '대학가 자취생. 먼저 쓸 사람은 기숙사 밖 1~2학년 (가정)',
-      metric: '다음 주 재구독 비율, 남는 반찬 비율',
-      channel: '학과 단체 대화방, 기숙사·생협, 학부모 모임',
-      cost: '포장·픽업 운영, 위생 관리, 앱 운영',
-      revenue: "학생 주간 구독, 부모의 '자녀 밥상 선물', 판매 수수료 (가격은 조사 필요)",
-    },
-    '사례 2 · 여행 사진 그림책': {
-      problem: '여행 사진이 휴대폰에 묻히고, 그날의 추억은 남지 않는다',
-      solution: 'AI 이야기·그림 생성 → 제작자 다듬기 → 인쇄·전송',
-      uvp: '사진 10장이면 우리 여행이 한 권의 그림책이 된다',
-      edge: '여수 장소별 이야기 틀과 고유한 그림체 (가정)',
-      customer: '여수를 찾는 가족 여행자와 친구 여행자 (가정)',
-      metric: '주문 수, 선물로 다시 주문한 비율',
-      channel: '호텔·관광지 안내 데스크, 여행 모임, 사진 인화점',
-      cost: 'AI 도구 사용료, 인쇄·배송, 제작자 활동비',
-      revenue: '그림책 1권 판매, 영상 추가 구매, 호텔·관광지 제휴 수수료 (가격은 조사 필요)',
-    },
-  };
 
   const AIS = [
     { id: 'chatgpt', name: 'ChatGPT', url: (q) => 'https://chatgpt.com/?q=' + encodeURIComponent(q) },
@@ -316,33 +288,65 @@
       why.map(([t, d]) => '<dt>' + esc(t) + '</dt><dd>' + esc(d) + '</dd>').join('') + '</dl></aside>';
   }
 
-  function promptCard(p) {
+  /* ───────── 샘플 답 (시뮬레이션 트랙 A·B) ───────── */
+  const SAMPLES = window.SAMPLES || {};
+  let track = 'A';
+  try { if (localStorage.getItem('idea-workbook-track') === 'B') track = 'B'; } catch (e) { /* 무시 */ }
+
+  function sampleBlock(b) {
+    if (b.t === 'ask') return '<div class="s-ask"><p class="s-sent"><b>보낸 내용</b> ' + esc(b.sent) + '</p>' +
+      '<p class="bubble ai"><b>AI</b>' + esc(b.ai) + '</p><p class="bubble me"><b>나</b>' + esc(b.me) + '</p></div>';
+    if (b.t === 'chat') return '<div class="s-chat">' + b.rows.map(([q, a]) =>
+      '<p class="bubble me"><b>나</b>' + esc(q) + '</p><p class="bubble ai"><b>AI · ' + esc(b.role) + '</b>' + esc(a) + '</p>').join('') + '</div>';
+    if (b.t === 'table') return '<div class="tbl-wrap"><table class="s-table' + (b.num ? ' num' : '') + '"><thead><tr>' + b.head.map((h) => '<th>' + esc(h) + '</th>').join('') + '</tr></thead><tbody>' +
+      b.rows.map((r) => '<tr>' + r.map((c) => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+    if (b.t === 'canvas') return canvasGrid(b.c);
+    if (b.t === 'flow') return '<ol class="flow">' + b.steps.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ol>';
+    if (b.t === 'list') return '<div class="s-list"><h5>' + esc(b.title) + '</h5><ol>' + b.items.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ol></div>';
+    if (b.t === 'pick') return '<p class="s-pick"><b>' + esc(b.label) + '</b>' + esc(b.text) + '</p>';
+    return '';
+  }
+
+  function samplesBox(n) {
+    const sm = SAMPLES[n];
+    if (!sm) return '';
+    return '<details class="sample" data-sample="' + n + '"><summary>샘플 답 보기 · 실습 시뮬레이션 결과</summary>' +
+      '<div class="tabs" role="tablist">' + Object.keys(TRACKS).map((k) =>
+        '<button type="button" class="tab" role="tab" data-track="' + k + '" aria-selected="' + (k === track) + '">' + TRACKS[k] + '</button>').join('') + '</div>' +
+      Object.keys(TRACKS).map((k) => '<div class="tab-panel" data-panel="' + k + '"' + (k === track ? '' : ' hidden') + '>' + sm[k].map(sampleBlock).join('') + '</div>').join('') +
+      '<p class="note">같은 프롬프트에 빈칸만 바꿔 넣고 한 대화창에서 이어 돌린 실제 답을 줄인 것입니다. AI 앱마다 표현은 달라도 모양과 분량은 비슷합니다.</p></details>';
+  }
+
+  function setTrack(k) {
+    track = k;
+    try { localStorage.setItem('idea-workbook-track', k); } catch (e) { /* 무시 */ }
+    document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.track === k)));
+    document.querySelectorAll('.tab-panel').forEach((p) => { p.hidden = p.dataset.panel !== k; });
+  }
+
+  /* PPT 하단 '다음 ›' 줄 */
+  let NEXT = {};
+  function footer(id) {
+    const nx = NEXT[id];
+    return '<footer class="card-foot"><a href="#' + (nx ? nx.href : 'finale') + '"><span>다음 ›</span> ' + esc(nx ? nx.label : '마무리') + '</a><span>김미연 강사</span></footer>';
+  }
+
+  function promptCard(p, stage) {
     const keys = keysOf(p.tpl);
     let extra = '';
     if (p.followups) {
-      extra += '<div class="followups"><h4>' + p.followups.title + '</h4><ul>' +
-        p.followups.items.map((q) => '<li><span>"' + esc(q) + '"</span><button type="button" class="mini" data-copy="' + esc(q) + '">복사</button></li>').join('') +
-        '</ul><p class="note">' + esc(p.followups.note) + '</p></div>';
+      const f = p.followups;
+      extra += '<div class="followups"><h4>' + f.title + '</h4><ul>' +
+        f.items.map((q) => '<li><span>"' + esc(q) + '"</span><button type="button" class="mini" data-copy="' + esc(q) + '">복사</button></li>').join('') +
+        '</ul>' + (f.all ? '<button type="button" class="btn sm" data-copy="' + esc(f.all + '\n' + f.items.map((q, i) => (i + 1) + '. ' + q).join('\n')) + '">네 질문 한 번에 복사</button>' : '') +
+        '<p class="note">' + esc(f.note) + '</p></div>';
     }
-    if (p.sample) {
-      extra += '<details class="sample"><summary>샘플 답 보기 · 문제 정의 문장</summary><div class="sample-grid">' +
-        p.sample.map(([t, d]) => '<div class="sample-item"><strong>' + esc(t) + '</strong><p>' + esc(d) + '</p></div>').join('') +
-        '</div><p class="note">AI가 돌려준 답의 예시입니다. 공식의 빈칸이 다 찼는지 확인합니다.</p></details>';
-    }
-    if (p.sampleFlow) {
-      extra += '<details class="sample"><summary>샘플 답 보기 · 한 줄 아이디어</summary>' +
-        p.sampleFlow.map(([t, line, steps]) => '<div class="sample-item"><p><strong>' + esc(t) + '</strong> ' + esc(line) + '</p><ol class="flow">' +
-          steps.map((s) => '<li>' + esc(s) + '</li>').join('') + '</ol></div>').join('') + '</details>';
-    }
-    if (p.canvasSamples) {
-      extra += '<details class="sample"><summary>샘플 답 보기 · 린 캔버스</summary>' +
-        Object.entries(CANVAS_SAMPLES).map(([t, c]) => '<div class="sample-item"><strong>' + esc(t) + '</strong>' + canvasGrid(c) + '</div>').join('') +
-        '<p class="note">AI가 돌려준 초안을 줄인 예시입니다. 같은 프롬프트에 사례만 바꿔 넣은 결과입니다.</p></details>';
-    }
+    extra += samplesBox(p.n);
     const hint = keys.length
       ? '<span class="sw"></span>노란 칸만 내 상황으로 바꿔 넣습니다 <span class="left" data-left></span>'
       : '바꿀 곳이 없습니다. 앞의 대화에 이어서 그대로 붙여 넣습니다.';
     return '<article class="card" id="p' + p.n + '" data-pid="' + p.n + '">' +
+      '<p class="card-kicker">' + (stage ? stage.step + ' ' + stage.title : '마무리') + ' · 프롬프트 ' + p.n + '</p>' +
       '<header class="card-head"><h3><span class="pn">프롬프트 ' + p.n + '</span> · ' + esc(p.title) + '</h3>' +
       '<span class="min">' + p.min + '분</span><span class="done-badge" aria-hidden="true">✓ 복사함</span></header>' +
       '<div class="card-grid"><div class="card-main">' +
@@ -350,19 +354,20 @@
       optsRow(p.tpl) +
       '<p class="hint">' + hint + '</p>' +
       actions(p.n) +
+      (p.callout ? '<p class="callout"><b>' + esc(p.callout[0]) + '</b>' + esc(p.callout[1]) + '</p>' : '') +
       (p.chained ? '<p class="chain-note">앞의 답을 보고 이어서 묻는 프롬프트입니다. 새 대화로 열지 말고 <b>같은 대화창에 붙여 넣으세요.</b></p>' : '') +
       (p.aside ? '<p class="aside">' + esc(p.aside) + '</p>' : '') +
       extra +
-      '</div>' + whyList(p.why) + '</div></article>';
+      '</div>' + whyList(p.why) + '</div>' + footer('p' + p.n) + '</article>';
   }
 
-  function offlineCard(p) {
-    return '<article class="card offline"><header class="card-head"><h3><span class="pn">테이블에서</span> · ' + esc(p.title) + '</h3><span class="min">' + p.min + '분</span></header>' +
+  function offlineCard(p, stage) {
+    return '<article class="card offline" id="talk"><p class="card-kicker">' + stage.step + ' ' + stage.title + ' · 테이블에서</p><header class="card-head"><h3><span class="pn">테이블에서</span> · ' + esc(p.title) + '</h3><span class="min">' + p.min + '분</span></header>' +
       '<div class="interview">' + p.cols.map(([t, qs]) => '<div><h4>' + esc(t) + '</h4><ul>' + qs.map((q) => '<li>"' + esc(q) + '"</li>').join('') + '</ul></div>').join('') + '</div>' +
       '<p class="note">' + esc(p.note) + '</p>' +
       '<p class="ask">' + esc(p.ask) + '</p>' +
       resultField({ key: p.memoKey, label: '실제 인터뷰 메모', hint: '들은 말을 그대로 두세 줄. 프롬프트 3의 노란 칸에 들어갑니다.' }) +
-      '</article>';
+      footer('talk') + '</article>';
   }
 
   function resultField(r) {
@@ -401,11 +406,20 @@
       '<svg class="divider-icon" viewBox="0 0 64 64" aria-hidden="true">' + ICONS[s.icon] + '</svg></div>';
   }
 
+  function buildNext() {
+    const seq = [];
+    STAGES.forEach((s) => s.prompts.forEach((p) => seq.push(p.offline ? { id: 'talk', label: '테이블에서 · ' + p.title } : { id: 'p' + p.n, label: '프롬프트 ' + p.n + ' · ' + p.title })));
+    seq.push({ id: 'p9', label: '프롬프트 9 · ' + P9.title });
+    NEXT = {};
+    seq.forEach((x, i) => { const nx = seq[i + 1]; NEXT[x.id] = nx ? { href: nx.id, label: nx.label } : { href: 'frame', label: '만능 틀 · 나만의 프롬프트' }; });
+  }
+
   function renderStages() {
+    buildNext();
     document.getElementById('stages').innerHTML = STAGES.map((s, idx) =>
       '<section class="sec" id="' + s.id + '" data-label="' + s.step + ' · ' + s.title + '">' +
       divider(s, idx) + stageIntro(s) +
-      s.prompts.map((p) => (p.offline ? offlineCard(p) : promptCard(p))).join('') +
+      s.prompts.map((p) => (p.offline ? offlineCard(p, s) : promptCard(p, s))).join('') +
       '<div class="outbox"><h3>내 결과물 · ' + s.output + '</h3>' + s.results.map(resultField).join('') +
       (s.results.some((r) => r.builder) ? builder() : '') +
       '<p class="note">이 칸에 적은 내용이 다음 단계 프롬프트의 노란 칸에 자동으로 들어갑니다.</p></div>' +
@@ -416,11 +430,15 @@
       '<div class="two-lines"><div><span class="tl-n">①</span><b>문제 정의 문장</b><p data-show="problem"></p></div>' +
       '<div><span class="tl-n">②</span><b>한 줄 소개</b><p data-show="oneLiner"></p></div></div></div>' +
       promptCard(P9) +
+      '<div class="slide"><h3 class="slide-title sm">두 트랙의 치명적 약점, 나란히</h3><div class="pair">' +
+      '<div><span class="case-tag">' + TRACKS.A + '</span><strong>위생·법규</strong><span>집에서 만든 반찬 판매는 위생 신고 대상. 공유주방·기존 반찬 가게와 손잡는 길을 멘토에게 묻는다</span></div>' +
+      '<div><span class="case-tag">' + TRACKS.B + '</span><strong>차별성</strong><span>"챗GPT에 그냥 묻는 것과 뭐가 다른가?" 묻고 들어서 이야기를 꺼낸다는 점을 증명할 방법을 멘토에게 묻는다</span></div>' +
+      '</div><p class="tip">약점은 아이디어마다 다르고, 그래서 멘토에게 물을 것도 다릅니다.</p></div>' +
       '<div class="outbox"><h3>내 결과물 · 오후에 들고 갈 세 가지</h3>' + resultField({ key: 'qa', label: '예상 질문과 보완', hint: '프롬프트 9의 질문 다섯 가지. 내일 발표 질의응답에 대비합니다.' }) +
       '<button type="button" class="btn primary" id="copyAll">결과물 한 번에 복사 (오픈채팅방·팀 공유용)</button></div>' +
       '<div class="slide"><h3 class="slide-title sm">AI 답을 믿기 전에</h3><ol class="three">' +
       '<li><b>1</b><div><strong>AI 답은 \'가설\'이다</strong><span>진짜인지는 고객이 정한다</span></div></li>' +
-      '<li><b>2</b><div><strong>숫자는 출처를 찾는다</strong><span>출처가 없으면 쓰지 않는다</span></div></li>' +
+      '<li><b>2</b><div><strong>숫자는 출처를 찾는다</strong><span>AI 고객의 숫자는 가설, 진짜 숫자는 테이블의 사람에게서</span></div></li>' +
       '<li><b>3</b><div><strong>한 번에 끝내지 않는다</strong><span>되묻고, 비교하고, 공격하게 한다</span></div></li></ol></div>' +
       '<div class="slide"><h3 class="slide-title sm">오후와 내일로</h3><div class="next3">' +
       '<div><b>13:30</b><strong>팀빌딩</strong><span>문제 정의 문장을 들고 가세요. 팀 주제를 고를 때 후보가 됩니다.</span></div>' +
@@ -506,6 +524,8 @@
         } else setField(k, val(k) === o ? '' : o);
         return;
       }
+      const tab = e.target.closest('.tab');
+      if (tab) { setTrack(tab.dataset.track); return; }
       const mini = e.target.closest('[data-copy]');
       if (mini) { copyText(mini.dataset.copy); toast('질문을 복사했어요. AI 대화창에 붙여 넣으세요.'); return; }
 
@@ -558,6 +578,7 @@
     const hasData = Object.values(state.f).some((v) => v && v.trim());
     if (hasData && !armed('case-' + id, id === 'mine' ? '한 번 더 누르면 입력한 빈칸을 모두 비웁니다.' : '한 번 더 누르면 지금 입력한 빈칸이 사례 내용으로 바뀝니다.')) return;
     state.f = id === 'mine' ? {} : Object.assign({}, CASES[id]);
+    if (id !== 'mine') { track = id === 'case2' ? 'B' : 'A'; try { localStorage.setItem('idea-workbook-track', track); } catch (e) { /* 무시 */ } }
     save(); renderStages(); refresh();
     toast(id === 'mine' ? '빈칸을 비웠어요. 프롬프트 1부터 시작하세요.' : '사례를 채웠어요. 프롬프트 1부터 따라 해 보세요.');
     document.getElementById('stage1').scrollIntoView({ behavior: 'smooth' });
