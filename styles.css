@@ -363,3 +363,5 @@ html.locked .gate {
 .gate h1 { font-size: clamp(26px, 6vw, 34px); margin: 18px 0 12px; }
 .gate p { opacity: .9; line-height: 1.7; }
 .gate svg { width: 88px; height: 88px; margin-top: 28px; color: var(--yellow); fill: var(--yellow); }
+
+a.btn { text-decoration: none; color: var(--ink); }
