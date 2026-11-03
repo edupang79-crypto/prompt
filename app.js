@@ -263,13 +263,19 @@
   const fill = (tpl) => tpl.replace(/\{\{(\w+)\}\}/g, (_, k) => val(k) || '[' + FIELDS[k].ph + ']');
 
   function copyText(text) {
+    // 클릭 처리 중에 바로 호출해야 합니다. 클립보드 API가 거부되면 선택-복사로 대신합니다.
+    if (navigator.clipboard && window.isSecureContext) {
+      try { navigator.clipboard.writeText(text).catch(() => execCopy(text)); return true; } catch (e) { /* 아래로 */ }
+    }
+    return execCopy(text);
+  }
+  function execCopy(text) {
     let ok = false;
     const ta = document.createElement('textarea');
     ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0'; ta.style.top = '0';
     document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
     try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
     document.body.removeChild(ta);
-    if (!ok && navigator.clipboard) { navigator.clipboard.writeText(text).catch(() => {}); ok = true; }
     return ok;
   }
 
@@ -301,7 +307,7 @@
     return '<div class="actions" data-pid="' + id + '">' +
       '<button type="button" class="btn primary" data-act="copy">복사하기</button>' +
       '<div class="ai-row"><span class="ai-label">복사하고 열기</span>' +
-      AIS.map((a) => '<button type="button" class="btn ai ai-' + a.id + '" data-act="open" data-ai="' + a.id + '">' + a.name + '</button>').join('') +
+      AIS.map((a) => '<a class="btn ai ai-' + a.id + '" href="' + a.url('') + '" target="_blank" rel="noopener" data-act="open" data-ai="' + a.id + '">' + a.name + '</a>').join('') +
       '</div></div>';
   }
 
@@ -512,7 +518,7 @@
         state.done[pid] = true; save(); refresh();
         if (btn.dataset.act === 'open') {
           const ai = AIS.find((a) => a.id === btn.dataset.ai);
-          window.open(ai.url(text), '_blank', 'noopener');
+          btn.href = ai.url(text); // 기본 링크 이동이 이 주소로 새 탭을 엽니다
           toast(ai.pasteOnly ? '복사했어요. ' + ai.name + ' 입력창을 길게 눌러 붙여 넣으세요.' : ai.name + ' 새 대화로 엽니다. 이미 대화 중이면 그 창에 붙여 넣으세요.');
         } else {
           toast(ok ? (left ? '복사했어요. 빈칸 ' + left + '개는 [ ]로 남아 있어요.' : '복사했어요. AI 대화창에 붙여 넣으세요.') : '복사에 실패했어요. 프롬프트를 길게 눌러 직접 복사해 주세요.');
@@ -534,15 +540,23 @@
         copyText(t); toast('결과물을 모두 복사했어요.');
       }
       if (e.target.id === 'resetAll') {
-        if (!confirm('입력한 빈칸과 결과물을 모두 지울까요?')) return;
+        if (!armed('reset', '한 번 더 누르면 입력한 내용을 모두 지웁니다.')) return;
         state = { f: {}, done: {} }; save(); renderStages(); refresh(); toast('모두 지웠어요.');
       }
     });
   }
 
+  // 확인 창 대신 '한 번 더 누르기'로 확인합니다 (confirm()이 막힌 환경 대비).
+  let armedKey = null, armedTimer;
+  function armed(key, msg) {
+    if (armedKey === key) { armedKey = null; clearTimeout(armedTimer); return true; }
+    armedKey = key; clearTimeout(armedTimer); armedTimer = setTimeout(() => { armedKey = null; }, 4000);
+    toast(msg); return false;
+  }
+
   function applyCase(id) {
     const hasData = Object.values(state.f).some((v) => v && v.trim());
-    if (hasData && !confirm(id === 'mine' ? '입력한 빈칸을 모두 비울까요?' : '지금 입력한 빈칸이 사례 내용으로 바뀝니다. 계속할까요?')) return;
+    if (hasData && !armed('case-' + id, id === 'mine' ? '한 번 더 누르면 입력한 빈칸을 모두 비웁니다.' : '한 번 더 누르면 지금 입력한 빈칸이 사례 내용으로 바뀝니다.')) return;
     state.f = id === 'mine' ? {} : Object.assign({}, CASES[id]);
     save(); renderStages(); refresh();
     toast(id === 'mine' ? '빈칸을 비웠어요. 프롬프트 1부터 시작하세요.' : '사례를 채웠어요. 프롬프트 1부터 따라 해 보세요.');
