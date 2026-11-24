@@ -11,11 +11,14 @@ const FILES = {
   '/styles.css': ['styles.css', 'text/css; charset=utf-8'],
   '/app.js': ['app.js', 'text/javascript; charset=utf-8'],
   '/robots.txt': ['robots.txt', 'text/plain; charset=utf-8'],
+  '/bentochem/': ['bentochem/index.html', 'text/html; charset=utf-8'],
+  '/bentochem/index.html': ['bentochem/index.html', 'text/html; charset=utf-8'],
 };
 
 http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   if (url.pathname === '/healthz') { res.writeHead(200, { 'Content-Type': 'text/plain' }); return res.end('ok'); }
+  if (url.pathname === '/bentochem') { res.writeHead(301, { Location: '/bentochem/' }); return res.end(); }
   const hit = FILES[url.pathname];
   if (!hit || (req.method !== 'GET' && req.method !== 'HEAD')) {
     res.writeHead(302, { Location: '/' }); return res.end();
@@ -24,7 +27,7 @@ http.createServer((req, res) => {
     if (err) { res.writeHead(500); return res.end('error'); }
     res.writeHead(200, {
       'Content-Type': hit[1],
-      'Cache-Control': hit[0] === 'index.html' ? 'no-cache' : 'public, max-age=300',
+      'Cache-Control': hit[0].endsWith('index.html') ? 'no-cache' : 'public, max-age=300',
       'X-Robots-Tag': 'noindex, nofollow',
       'X-Content-Type-Options': 'nosniff',
       'Referrer-Policy': 'no-referrer',

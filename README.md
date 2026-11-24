@@ -34,7 +34,22 @@ QR 코드 주소(`?k=접속키`)로 들어온 기기만 워크북을 볼 수 있
 저장소 **Settings → Pages → Build and deployment**에서 Source를 `Deploy from a branch`로, 브랜치와 `/ (root)` 폴더를 선택하면
 `https://<계정>.github.io/<저장소>/` 주소로 열립니다. 이 주소를 QR로 만들어 오픈채팅방에 공유하세요.
 
+## 벤토케미칼 통합 ERP (`bentochem/`)
+벤토나이트 뒤채움재(TG공법) 회사용 경영 관리 페이지입니다. 같은 저장소에 함께 배포되며 주소 뒤에 `/bentochem/`을 붙여 엽니다.
+
+- GitHub Pages: `https://<계정>.github.io/<저장소>/bentochem/`
+- Railway: `https://○○○.up.railway.app/bentochem/`
+- 로컬: `bentochem/index.html`을 브라우저로 열기
+
+화면: 대시보드 · 집계 분석 · 품질 현황 · 지표 입력 · 기업정보 · 신청서 작성 · 만료 알림 · 데이터 관리.
+처음 열면 2026년 10월 실내시험 결과(블리딩·점도·겔타임·가소상태·1시간/28일 강도)와 회사명·제품 4종·납품 현장이 들어 있습니다.
+
+입력값은 **여는 사람의 브라우저(localStorage)에만** 저장되고 서버로 전송되지 않습니다.
+다른 PC·다른 사람과는 공유되지 않으므로 「데이터 관리 → JSON 백업」으로 내려받아 두고, 다른 기기에서는 「복원」에 붙여 넣어 옮깁니다.
+검색엔진 노출은 막아 두었지만(`noindex`) 주소를 아는 사람은 열 수 있으니, 공개 저장소의 Pages로 배포할 때는 회사 기밀 수치를 파일 안에 넣지 않습니다.
+
 ## 파일
+- `bentochem/index.html` 벤토케미칼 통합 ERP (파일 하나로 동작)
 - `index.html` 페이지 뼈대
 - `styles.css` 강의 PPT 톤(남색 표지 · 종이 배경 · 빨간 단계 표시 · 노란 빈칸)
 - `app.js` 프롬프트 데이터와 동작 (프롬프트 문구를 고치려면 `STAGES`, `P9`, `FRAME`을 수정)
